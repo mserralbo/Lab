@@ -29,6 +29,8 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(com.laboratory.studentweb.exception.GenericExceptionMapper.class);
+        resources.add(com.laboratory.studentweb.exception.ServiceExceptionMapper.class);
         resources.add(com.laboratory.studentweb.service.EstudianteFacadeREST.class);
     }
     

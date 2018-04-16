@@ -6,6 +6,7 @@
 package com.laboratory.studentweb.service;
 
 import com.laboratory.studentweb.entity.Estudiante;
+import com.laboratory.studentweb.exception.ServiceException;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -19,6 +20,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  *
@@ -87,5 +89,14 @@ public class EstudianteFacadeREST extends AbstractFacade<Estudiante> {
     protected EntityManager getEntityManager() {
         return em;
     }
-    
+    @GET
+   @Path("/error")
+   public Response sampleError() throws ServiceException {
+    throw new ServiceException(HttpStatus.NOT_FOUND.value(), "Sample Error Message", 1);
+}
+   @GET
+   @Path("/error/generic")
+    public Response sampleGenericError() {
+    throw new NullPointerException();
+} 
 }
